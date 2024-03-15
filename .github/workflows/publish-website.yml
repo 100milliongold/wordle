@@ -1,0 +1,28 @@
+name: publish website
+
+on:
+  push:
+    tags: "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/iron"
+      - run: npm ci --force
+      - run: npm run build
+      - name: github page 에 맞게 파일제거
+        run: |
+          find . -type f -not -path "./build/*" -not -path "./.git/*" -exec rm -rf {} \; &&\
+          mv build/* . &&\
+          rm -rf build
+
+      - name: Push changes to gh-pages branch # merge 내용들을 gh-pages 브랜치로 최종 push
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
