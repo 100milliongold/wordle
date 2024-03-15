@@ -4,7 +4,7 @@ permissions:
   pull-requests: write
   contents: write
   repository-projects: write
-  
+
 on:
   push:
     tags: '*'
@@ -23,8 +23,9 @@ jobs:
       - name: github page 에 맞게 파일제거
         run: |
           find . -type f -not -path "./build/*" -not -path "./.git/*" -exec rm -rf {} \; &&\
+          rm -rf public src node_modules &&\
           mv build/* . &&\
-          rm -rf build public src node_modules
+          rm -rf build
 
       - name: Push changes to gh-pages branch # merge 내용들을 gh-pages 브랜치로 최종 push
         uses: ad-m/github-push-action@master
