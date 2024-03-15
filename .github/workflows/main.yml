@@ -1,5 +1,10 @@
 name: main branch check
 
+permissions:
+  pull-requests: write
+  contents: write
+  repository-projects: write
+
 on:
   pull_request:
     branches: ['main']
