@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      // GitHub 페이지용 단일 페이지 앱
+      // MIT 라이센스
+      // https://github.com/rafgraph/spa-github-pages
+      // 이 스크립트는 현재 URL을 가져와서 경로와 쿼리를 변환합니다.
+      // 문자열을 쿼리 문자열로 변환한 다음 브라우저를 리디렉션합니다.
+      // 쿼리 문자열과 해시 조각만 포함된 새 URL로,
+      // 예를 들어 https://www.foo.tld/one/two?a=b&c=d#qwe는 다음과 같습니다.
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // 참고: 이 404.html 파일이 작동하려면 최소 512바이트가 되어야 합니다.
+      // Internet Explorer 사용(현재 > 512바이트)
+
+      // 사용자 정의 도메인을 사용하지 않고 프로젝트 페이지 사이트를 생성하는 경우,
+      // 그런 다음 pathSegmentsToKeep을 1로 설정합니다(기업 사용자는 > 1로 설정해야 할 수도 있음).
+      // 이 방법으로 코드는 경로의 경로 부분만 대체하며,
+      // 앱이 상주하는 실제 디렉터리입니다. 예를 들면 다음과 같습니다.
+      // https://username.github.io/repo-name/one/two?a=b&c=d#qwe는 다음과 같습니다.
+      // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
+      // 그렇지 않으면 pathSegmentsToKeep을 0으로 둡니다.
+
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
