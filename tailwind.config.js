@@ -12,16 +12,29 @@ module.exports = {
         'board-present': '#b59f3b',
         'board-absent': '#3a3a3c',
       },
+      flex: {
+        half: '0.5',
+      },
+      fontFamily: {
+        LibreFranklin: ['Libre Franklin'],
+      },
+      fontSize: {
+        key: '1.25em',
+      },
       textColor: {
         board: '#fff',
       },
       backgroundImage: {},
+      margin: {
+        key: '0 6px 0 0',
+      },
       width: {
         board: '350px',
       },
       height: {
         board: '420px',
         keyboard: '200px',
+        key: '58px',
       },
       padding: {
         board: '10px',

@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from './styles';
 import Row from './row';
 import Key from './key';
+import Half from './blank';
 import { ReactComponent as BackspaceIcon } from 'assets/images/backspace_FILL0_wght400_GRAD0_opsz24.svg';
 
 export default function Keyboard() {
@@ -20,6 +21,7 @@ export default function Keyboard() {
         <Key>p</Key>
       </Row>
       <Row>
+        <Half />
         <Key>a</Key>
         <Key>s</Key>
         <Key>d</Key>
@@ -29,9 +31,10 @@ export default function Keyboard() {
         <Key>j</Key>
         <Key>k</Key>
         <Key>l</Key>
+        <Half />
       </Row>
       <Row>
-        <Key>enter</Key>
+        <Key oneAndAHalf>enter</Key>
         <Key>z</Key>
         <Key>x</Key>
         <Key>c</Key>
@@ -39,7 +42,7 @@ export default function Keyboard() {
         <Key>b</Key>
         <Key>n</Key>
         <Key>m</Key>
-        <Key>
+        <Key oneAndAHalf>
           <BackspaceIcon />
         </Key>
       </Row>

@@ -3,6 +3,11 @@ import { STATE } from 'types'
 
 
 export const Layout = styled.div<{ state: STATE }>`
+    &::before {
+        content: "";
+        display: inline-block;
+        padding-bottom: 100%;
+    }
     ${tw`
     inline-flex
     justify-center
@@ -12,6 +17,7 @@ export const Layout = styled.div<{ state: STATE }>`
     font-bold
     align-middle
     text-board
+    font-LibreFranklin
     `}
     ${
     ({ state }) => 
