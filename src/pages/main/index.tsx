@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ActionButton } from 'components';
+import { encodeHASH } from 'utils';
 import {
   Layout,
   Container,
@@ -15,6 +16,7 @@ import {
 } from './styles';
 
 export default function Main() {
+  const wordle = encodeHASH('wordle');
   return (
     <Layout data-cy='Main-Layout'>
       <Container data-cy='Main-Container'>
@@ -29,7 +31,7 @@ export default function Main() {
               내일은 새로운 퍼즐과 함께하는 새로운 날입니다. 그때 만나.
             </ContentBodyText>
             <ContentBodyActions>
-              <Link to={'/game'}>
+              <Link to={`/game/${wordle}`}>
                 <ActionButton>시작하기</ActionButton>
               </Link>
               <ActionButton>워들 생성하기</ActionButton>
