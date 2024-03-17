@@ -1,10 +1,15 @@
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'assets/styles/index.css';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './core/reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalStyles } from 'twin.macro';
 import { Loading } from 'pages';
+import { legacy_createStore as createStore } from 'redux';
+import rootReducer from 'core/reducer';
+import { Provider } from 'react-redux';
+
+const store = createStore(rootReducer);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,15 +20,17 @@ const GamePage = lazy(() => import('pages/game'));
 
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <Suspense fallback={<Loading />}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/game/:id' element={<GamePage />} />
-        </Routes>
-      </BrowserRouter>
-    </Suspense>
+    <Provider store={store}>
+      <GlobalStyles />
+      <Suspense fallback={<Loading />}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Routes>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/game/:id' element={<GamePage />} />
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
+    </Provider>
   </React.StrictMode>,
 );
 

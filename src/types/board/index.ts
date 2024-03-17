@@ -7,4 +7,8 @@
  */
 export type STATE = 'present' | 'correct' | 'absent' | null
 
-export type CAHR = 'A'
+export type CHAR = '' | 'A' | 'B' | 'C' |'D' | 'E' | 'F' |'G' | 'H' | 'I' |'J' | 'K' | 'M' |'N' | 'L' | 'O' |'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+
+export type ROW = [CHAR  , CHAR , CHAR , CHAR , CHAR ]
+
+export type BOARD = [ROW , ROW, ROW, ROW , ROW, ROW]

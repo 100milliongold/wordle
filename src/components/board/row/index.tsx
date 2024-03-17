@@ -2,14 +2,16 @@ import React from 'react';
 import Col from './col';
 import { Layout } from './styles';
 
-export default function Row() {
+import { ROW } from 'types';
+
+interface IProps {
+  row: ROW;
+}
+
+export default function Row({ row }: IProps) {
   return (
     <Layout data-cy='row-Layout'>
-      <Col>C</Col>
-      <Col state='correct'>C</Col>
-      <Col>C</Col>
-      <Col>C</Col>
-      <Col state='present'>C</Col>
+      {React.Children.toArray(row.map((char) => <Col>{char}</Col>))}
     </Layout>
   );
 }
