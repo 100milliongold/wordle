@@ -1,7 +1,7 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled } from 'twin.macro';
 
 export const Layout = styled.div`
-    ${tw`
+  ${tw`
     relative
     flex
     min-h-screen
@@ -12,10 +12,10 @@ export const Layout = styled.div`
     h-full
     text-white
     `}
-`
+`;
 
 export const Main = styled.main`
-    ${tw`
+  ${tw`
     flex
     flex-col
     my-0
@@ -24,4 +24,4 @@ export const Main = styled.main`
     max-w-96
     flex-1
     `}
-`
+`;

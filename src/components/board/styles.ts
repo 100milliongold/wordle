@@ -1,18 +1,18 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled } from 'twin.macro';
 
 export const Layout = styled.div`
-    ${tw`
+  ${tw`
     flex
     flex-col
     justify-center
     items-center
     w-full
     `}
-    flex-grow: 1;
-`
+  flex-grow: 1;
+`;
 
 export const Content = styled.div`
-    ${tw`
+  ${tw`
     grid
     gap-board
     w-board
@@ -21,4 +21,4 @@ export const Content = styled.div`
     box-border
     grid-rows-board
     `}
-`
+`;

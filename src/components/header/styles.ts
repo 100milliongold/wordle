@@ -1,7 +1,7 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled } from 'twin.macro';
 
 export const Layout = styled.header`
-    ${tw`
+  ${tw`
     flex 
     flex-row 
     items-center 
@@ -14,19 +14,18 @@ export const Layout = styled.header`
     `}
 `;
 
-
 export const AppHeader = styled.div`
-    ${tw`pl-3`}
-`
+  ${tw`pl-3`}
+`;
 
 export const Title = styled.h1`
-    ${tw`text-center text-lg font-bold`}
-`
+  ${tw`text-center text-lg font-bold`}
+`;
 
 export const Menu = styled.menu`
-    ${tw`
+  ${tw`
     flex
     flex-row
     items-end
     `}
-`
+`;

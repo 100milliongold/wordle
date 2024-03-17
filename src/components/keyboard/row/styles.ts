@@ -1,7 +1,7 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled } from 'twin.macro';
 
 export const Layout = styled.div`
-    ${tw`
+  ${tw`
     flex
     flex-row
     w-full
@@ -10,4 +10,4 @@ export const Layout = styled.div`
     mb-2
     touch-manipulation
     `}
-`
+`;
