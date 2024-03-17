@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wordle/static/css/main.76958aeb.css",
-    "main.js": "/wordle/static/js/main.f8d2b8d4.js",
+    "main.js": "/wordle/static/js/main.f411b1f1.js",
     "static/js/453.5e08c15b.chunk.js": "/wordle/static/js/453.5e08c15b.chunk.js",
     "static/media/wordle-icon.svg": "/wordle/static/media/wordle-icon.ac67f02f8d0de3a75e71076d129df434.svg",
     "index.html": "/wordle/index.html",
@@ -9,11 +9,11 @@
     "static/media/backspace_FILL0_wght400_GRAD0_opsz24.svg": "/wordle/static/media/backspace_FILL0_wght400_GRAD0_opsz24.8da82c8d3a010e215a2db023da155023.svg",
     "static/media/menu_FILL0_wght400_GRAD0_opsz24.svg": "/wordle/static/media/menu_FILL0_wght400_GRAD0_opsz24.0d3c31af19b9c297e9457042ec495ba1.svg",
     "main.76958aeb.css.map": "/wordle/static/css/main.76958aeb.css.map",
-    "main.f8d2b8d4.js.map": "/wordle/static/js/main.f8d2b8d4.js.map",
+    "main.f411b1f1.js.map": "/wordle/static/js/main.f411b1f1.js.map",
     "453.5e08c15b.chunk.js.map": "/wordle/static/js/453.5e08c15b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76958aeb.css",
-    "static/js/main.f8d2b8d4.js"
+    "static/js/main.f411b1f1.js"
   ]
 }
