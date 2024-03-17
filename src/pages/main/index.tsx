@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 export default function Main() {
-  const wordle = encodeHASH('wordle');
+  const wordle = encodeHASH('WORDLE');
   return (
     <Layout data-cy='Main-Layout'>
       <Container data-cy='Main-Container'>
@@ -25,10 +25,10 @@ export default function Main() {
           <LogoText data-cy='Main-LogoText'>워드러</LogoText>
           <ContentBody data-cy='Main-ContentBody'>
             <ContentWelcomeTitle data-cy='Main-ContentWelcomeTitle'>
-              환영합니다. 워드러
+              환영합니다.
             </ContentWelcomeTitle>
             <ContentBodyText data-cy='Main-ContentBodyText'>
-              내일은 새로운 퍼즐과 함께하는 새로운 날입니다. 그때 만나.
+              새로운 퍼즐과 함께하는 새로운 날입니다.
             </ContentBodyText>
             <ContentBodyActions>
               <Link to={`/game/${wordle}`}>

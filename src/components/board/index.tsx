@@ -1,17 +1,19 @@
 import React from 'react';
 import { Layout, Content } from './styles';
 import Row from './row';
+import { BOARD } from 'types';
 
-export default function Board() {
+interface IProps {
+  board: BOARD;
+}
+
+export default function Board({ board }: IProps) {
   return (
     <Layout data-cy='board-Layout'>
       <Content data-cy='board-Content'>
-        <Row data-cy='board-Row'></Row>
-        <Row data-cy='board-Row'></Row>
-        <Row data-cy='board-Row'></Row>
-        <Row data-cy='board-Row'></Row>
-        <Row data-cy='board-Row'></Row>
-        <Row data-cy='board-Row'></Row>
+        {React.Children.toArray(
+          board.map((row) => <Row row={row} data-cy='board-Row' />),
+        )}
       </Content>
     </Layout>
   );

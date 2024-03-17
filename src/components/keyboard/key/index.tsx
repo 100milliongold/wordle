@@ -6,6 +6,7 @@ interface IProps {
   state?: STATE;
   style?: React.CSSProperties;
   oneAndAHalf?: boolean;
+  onClick?: (arg: unknown) => void;
 }
 
 export default function Key({
@@ -13,9 +14,11 @@ export default function Key({
   state = null,
   style,
   oneAndAHalf,
+  onClick,
 }: React.PropsWithChildren<IProps>) {
   return (
     <Layout
+      onClick={onClick}
       oneAndAHalf={oneAndAHalf}
       style={style}
       state={state}
