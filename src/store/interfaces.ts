@@ -1,5 +1,4 @@
-import { ROW, BOARD } from "types";
-
+import { ROW, BOARD, CHECK_BOARD } from 'types';
 
 /**
  * challengeGrid : 보드
@@ -10,9 +9,10 @@ import { ROW, BOARD } from "types";
  */
 
 export interface IReducer {
-    challengeGrid: BOARD
-    solvedGrid?: ROW
-    workingGrid: ROW
-    X: number,
-    Y: number
+  challengeGrid: BOARD;
+  solvedRow?: ROW;
+  workingGrid: ROW;
+  chekGrid: CHECK_BOARD;
+  X: number;
+  Y: number;
 }

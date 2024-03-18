@@ -1,10 +1,8 @@
-import tw, { styled } from "twin.macro";
-import { STATE } from "types";
+import tw, { styled } from 'twin.macro';
+import { STATE } from 'types';
 
-
-
-export const Layout = styled.button<{ state: STATE, oneAndAHalf?: boolean }>`
-    ${tw`
+export const Layout = styled.button<{ state: STATE; oneAndAHalf?: boolean }>`
+  ${tw`
     uppercase
     text-key
     font-bold
@@ -24,18 +22,23 @@ export const Layout = styled.button<{ state: STATE, oneAndAHalf?: boolean }>`
     font-LibreFranklin
     `}
 
-    ${({oneAndAHalf}) => `
-        ${oneAndAHalf ? `
+  ${({ oneAndAHalf }) => `
+        ${
+          oneAndAHalf
+            ? `
         flex: 1.5;
         font-size: 12px;
-        ` : ""}
+        `
+            : ''
+        }
     `}
 
-    ${
-    ({ state }) => 
-        state === 'absent' ? tw`bg-board-absent` 
-        : state === 'correct' ? tw`bg-board-correct` 
-        : state === 'present' ? tw`bg-board-present`
-        : tw`bg-board`
-    }
-`
+    ${({ state }) =>
+    state === 'absent'
+      ? tw`bg-board-absent`
+      : state === 'correct'
+        ? tw`bg-board-correct`
+        : state === 'present'
+          ? tw`bg-board-present`
+          : tw`bg-board`}
+`;

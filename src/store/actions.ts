@@ -1,46 +1,42 @@
-import { CHAR , ROW } from 'types'
+import { CHAR, ROW } from 'types';
 
-import * as types from './types'
+import * as types from './types';
 
 /**
  * 새 게임 시작
- * @returns 
+ * @returns
  */
-export const createGrid = (coords: ROW) => ({ 
-    payload: coords, 
-    type: types.CREATE_GRID 
-})
+export const createGrid = (coords: ROW) => ({
+  payload: coords,
+  type: types.CREATE_GRID,
+});
 
 /**
  * 값 입력
- * @param value 
- * @param coords 
- * @returns 
+ * @param value
+ * @param coords
+ * @returns
  */
 export const fillBlock = (value: CHAR) => ({
-    payload: value,
-    type: types.FILL_BLOCK,
-})
+  payload: value,
+  type: types.FILL_BLOCK,
+});
 
 /**
  * 값 삭제
- * @returns 
+ * @returns
  */
 export const removeBlock = () => ({
-    type: types.REMOVE_BLOCK,
-})
+  type: types.REMOVE_BLOCK,
+});
 
 /**
  * 검사
- * @returns 
+ * @returns
  */
 export const checkBlock = () => ({
-    type: types.CHECK_BLOCK,
-})
-
-
-
-
+  type: types.CHECK_BLOCK,
+});
 
 export type BoardAction =
   | ReturnType<typeof createGrid>

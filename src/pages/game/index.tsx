@@ -12,7 +12,7 @@ export default function Game() {
   const navigate = useNavigate();
 
   const {
-    reducer: { challengeGrid },
+    reducer: { challengeGrid, chekGrid },
   } = useSelector((state: RootState) => state);
 
   React.useEffect(() => {
@@ -27,7 +27,11 @@ export default function Game() {
     <Layout data-cy='game-Layout'>
       <Header data-cy='game-Header' />
       <Main>
-        <Board board={challengeGrid} data-cy='game-Board' />
+        <Board
+          checkBoard={chekGrid}
+          board={challengeGrid}
+          data-cy='game-Board'
+        />
         <Keyboard data-cy='game-Keyboard' />
       </Main>
     </Layout>
