@@ -1,16 +1,13 @@
-import { Fragment, useRef, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import React from 'react';
 
 interface IProps {
-    open : boolean
-    onClose: (arg: boolean) => void
+  open: boolean;
+  onClose: (arg: boolean) => void;
 }
 
-export default function CreateWordle({ open } : React.PropsWithChildren<IProps>) {
-
-    const cancelButtonRef = useRef(null)
-
-    return (
-        <>tsetes</>
-    )
+export default function CreateWordle({
+  open,
+  onClose,
+}: React.PropsWithChildren<IProps>) {
+  return <></>;
 }
