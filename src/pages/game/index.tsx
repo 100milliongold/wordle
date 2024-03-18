@@ -17,6 +17,7 @@ export default function Game() {
 
   React.useEffect(() => {
     if (id !== undefined) {
+      // console.log(decodeHASH(id));
       dispatch(createGrid(stringToRow(decodeHASH(id))));
     } else {
       navigate('/');

@@ -19,6 +19,8 @@ function reducer(state = initialState, action: BoardAction): IReducer {
      */
     case types.CREATE_GRID: {
       const solvedRow = action.payload as ROW;
+      // console.log('create-grid' , solvedRow);
+      
       const challengeGrid = createFullGrid();
       const chekGrid = createCheckFullGrid();
       const X = 0,
@@ -87,6 +89,11 @@ function reducer(state = initialState, action: BoardAction): IReducer {
       
       const input = challengeGrid[X];
       const check = checkRow(input , solvedRow);
+
+      // console.log('input =>' , input);
+      // console.log('answe =>' , solvedRow);
+      // console.log('check =>' , check);
+      
 
       chekGrid[X] = check;
 

@@ -9,6 +9,8 @@ interface IProps {
 }
 
 export default function Board({ board, checkBoard }: IProps) {
+  // console.log({board , checkBoard});
+  
   return (
     <Layout data-cy='board-Layout'>
       <Content data-cy='board-Content'>
