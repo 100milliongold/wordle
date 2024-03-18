@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 export default function Main() {
-  const wordle = encodeHASH('WORDLE');
+  const wordle = encodeHASH('WORLD');
   return (
     <Layout data-cy='Main-Layout'>
       <Container data-cy='Main-Container'>

@@ -7,7 +7,7 @@ export const stringToRow = (str: string): ROW => {
   return str
     .toUpperCase()
     .split('')
-    .splice(0, 4)
+    .splice(0, 5)
     .map((o) => o as CHAR) as ROW;
 };
 
