@@ -1,5 +1,5 @@
 import { IReducer } from './interfaces';
-import { createCheckFullGrid, createFullGrid, createRow } from 'utils';
+import { createCheckFullGrid, createFullGrid, createRow, checkRow } from 'utils';
 import * as types from './types';
 import { BoardAction } from './actions';
 import { CHAR, ROW } from 'types';
@@ -78,13 +78,18 @@ function reducer(state = initialState, action: BoardAction): IReducer {
      */
     case types.CHECK_BLOCK: {
       let { Y, X } = state;
-      const { challengeGrid } = state;
+      const { challengeGrid, solvedRow, chekGrid } = state;
       if ((Y > 0 && Y <= 4) || X > 4) {
         return {
           ...state,
         };
       }
-      challengeGrid[X][Y];
+      
+      const input = challengeGrid[X];
+      const check = checkRow(input , solvedRow);
+
+      chekGrid[X] = check;
+
       Y = 0;
       X = X + 1;
 
@@ -93,6 +98,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
         challengeGrid,
         X,
         Y,
+        chekGrid
       };
     }
 
