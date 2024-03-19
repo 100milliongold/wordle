@@ -29,6 +29,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-modal": "latest",
     "babel-plugin-macros": "latest",
     "eslint": "latest",
     "eslint-plugin-prettier": "latest",
