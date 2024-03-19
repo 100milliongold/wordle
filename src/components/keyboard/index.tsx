@@ -4,6 +4,7 @@ import Row from './row';
 import Key from './key';
 import Half from './blank';
 import PressKey from './press-key';
+import SpecialKey from './press-key/special-key';
 import { ReactComponent as BackspaceIcon } from 'assets/images/backspace_FILL0_wght400_GRAD0_opsz24.svg';
 import { useDispatch } from 'react-redux';
 import { fillBlock, removeBlock, checkBlock } from 'store';
@@ -11,6 +12,8 @@ import { CHAR } from 'types';
 
 export default function Keyboard() {
   const dispatch = useDispatch();
+
+  const event = (char: CHAR) => dispatch(fillBlock(char));
 
   const click = React.useCallback(
     (str: CHAR) => {
@@ -27,7 +30,8 @@ export default function Keyboard() {
 
   return (
     <Layout data-cy='keyboard-Layout'>
-      <PressKey />
+      <PressKey event={event} />
+      <SpecialKey />
       <Row>
         <Key onClick={() => click('Q')}>q</Key>
         <Key onClick={() => click('W')}>w</Key>

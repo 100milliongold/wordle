@@ -1,5 +1,10 @@
 import { IReducer } from './interfaces';
-import { createCheckFullGrid, createFullGrid, createRow, checkRow } from 'utils';
+import {
+  createCheckFullGrid,
+  createFullGrid,
+  createRow,
+  checkRow,
+} from 'utils';
 import * as types from './types';
 import { BoardAction } from './actions';
 import { CHAR, ROW } from 'types';
@@ -20,7 +25,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
     case types.CREATE_GRID: {
       const solvedRow = action.payload as ROW;
       // console.log('create-grid' , solvedRow);
-      
+
       const challengeGrid = createFullGrid();
       const chekGrid = createCheckFullGrid();
       const X = 0,
@@ -86,14 +91,13 @@ function reducer(state = initialState, action: BoardAction): IReducer {
           ...state,
         };
       }
-      
+
       const input = challengeGrid[X];
-      const check = checkRow(input , solvedRow);
+      const check = checkRow(input, solvedRow);
 
       // console.log('input =>' , input);
       // console.log('answe =>' , solvedRow);
       // console.log('check =>' , check);
-      
 
       chekGrid[X] = check;
 
@@ -105,7 +109,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
         challengeGrid,
         X,
         Y,
-        chekGrid
+        chekGrid,
       };
     }
 

@@ -8,6 +8,7 @@ import { Loading } from 'pages';
 import { legacy_createStore as createStore } from 'redux';
 import rootReducer from 'core/reducer';
 import { Provider } from 'react-redux';
+import { HotkeysProvider } from 'react-hotkeys-hook';
 
 const store = createStore(rootReducer);
 
@@ -21,15 +22,17 @@ const GamePage = lazy(() => import('pages/game'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyles />
-      <Suspense fallback={<Loading />}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/game/:id' element={<GamePage />} />
-          </Routes>
-        </BrowserRouter>
-      </Suspense>
+      <HotkeysProvider>
+        <GlobalStyles />
+        <Suspense fallback={<Loading />}>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <Routes>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/game/:id' element={<GamePage />} />
+            </Routes>
+          </BrowserRouter>
+        </Suspense>
+      </HotkeysProvider>
     </Provider>
   </React.StrictMode>,
 );

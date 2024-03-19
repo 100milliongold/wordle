@@ -1,37 +1,37 @@
 import React from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { useDispatch } from 'react-redux';
-import { fillBlock, removeBlock, checkBlock } from 'store';
+import { CHAR } from 'types';
 
-export default function PressKey() {
-  const dispatch = useDispatch();
-  useHotkeys('a', () => dispatch(fillBlock('A')));
-  useHotkeys('b', () => dispatch(fillBlock('B')));
-  useHotkeys('c', () => dispatch(fillBlock('C')));
-  useHotkeys('d', () => dispatch(fillBlock('D')));
-  useHotkeys('e', () => dispatch(fillBlock('E')));
-  useHotkeys('f', () => dispatch(fillBlock('F')));
-  useHotkeys('g', () => dispatch(fillBlock('G')));
-  useHotkeys('h', () => dispatch(fillBlock('H')));
-  useHotkeys('i', () => dispatch(fillBlock('I')));
-  useHotkeys('j', () => dispatch(fillBlock('J')));
-  useHotkeys('k', () => dispatch(fillBlock('K')));
-  useHotkeys('l', () => dispatch(fillBlock('L')));
-  useHotkeys('m', () => dispatch(fillBlock('M')));
-  useHotkeys('n', () => dispatch(fillBlock('N')));
-  useHotkeys('o', () => dispatch(fillBlock('O')));
-  useHotkeys('p', () => dispatch(fillBlock('P')));
-  useHotkeys('q', () => dispatch(fillBlock('Q')));
-  useHotkeys('r', () => dispatch(fillBlock('R')));
-  useHotkeys('s', () => dispatch(fillBlock('S')));
-  useHotkeys('t', () => dispatch(fillBlock('T')));
-  useHotkeys('u', () => dispatch(fillBlock('U')));
-  useHotkeys('v', () => dispatch(fillBlock('V')));
-  useHotkeys('w', () => dispatch(fillBlock('W')));
-  useHotkeys('x', () => dispatch(fillBlock('X')));
-  useHotkeys('y', () => dispatch(fillBlock('Y')));
-  useHotkeys('z', () => dispatch(fillBlock('Z')));
-  useHotkeys('backspace', () => dispatch(removeBlock()));
-  useHotkeys('enter', () => dispatch(checkBlock()));
+interface IProps {
+  event: (char: CHAR) => void;
+}
+
+export default function PressKey({ event }: IProps) {
+  useHotkeys('a', () => event('A'));
+  useHotkeys('b', () => event('B'));
+  useHotkeys('c', () => event('C'));
+  useHotkeys('d', () => event('D'));
+  useHotkeys('e', () => event('E'));
+  useHotkeys('f', () => event('F'));
+  useHotkeys('g', () => event('G'));
+  useHotkeys('h', () => event('H'));
+  useHotkeys('i', () => event('I'));
+  useHotkeys('j', () => event('J'));
+  useHotkeys('k', () => event('K'));
+  useHotkeys('l', () => event('L'));
+  useHotkeys('m', () => event('M'));
+  useHotkeys('n', () => event('N'));
+  useHotkeys('o', () => event('O'));
+  useHotkeys('p', () => event('P'));
+  useHotkeys('q', () => event('Q'));
+  useHotkeys('r', () => event('R'));
+  useHotkeys('s', () => event('S'));
+  useHotkeys('t', () => event('T'));
+  useHotkeys('u', () => event('U'));
+  useHotkeys('v', () => event('V'));
+  useHotkeys('w', () => event('W'));
+  useHotkeys('x', () => event('X'));
+  useHotkeys('y', () => event('Y'));
+  useHotkeys('z', () => event('Z'));
   return <></>;
 }
