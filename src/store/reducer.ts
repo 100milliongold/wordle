@@ -65,7 +65,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
     case types.REMOVE_BLOCK: {
       let { Y } = state;
       const { X, challengeGrid } = state;
-      if (Y === -1) {
+      if (Y === 0) {
         return {
           ...state,
         };
@@ -86,7 +86,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
     case types.CHECK_BLOCK: {
       let { Y, X } = state;
       const { challengeGrid, solvedRow, chekGrid } = state;
-      if ((Y > 0 && Y <= 4) || X > 4) {
+      if ((Y > 0 && Y <= 4) || X > 5) {
         return {
           ...state,
         };
