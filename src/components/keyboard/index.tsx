@@ -10,7 +10,12 @@ import { useDispatch } from 'react-redux';
 import { fillBlock, removeBlock, checkBlock } from 'store';
 import { CHAR } from 'types';
 
-export default function Keyboard() {
+interface IProps {
+  // event: (str: CHAR) => void;
+  ['data-cy']: string;
+}
+
+export default function Keyboard(props: IProps) {
   const dispatch = useDispatch();
 
   const event = (char: CHAR) => dispatch(fillBlock(char));

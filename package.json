@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "axios": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hotkeys-hook": "latest",
@@ -15,6 +16,7 @@
     "react-scripts": "latest",
     "redux": "latest",
     "redux-persist": "latest",
+    "swr": "latest",
     "tailwindcss": "latest",
     "twin.macro": "latest",
     "web-vitals": "latest"

@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import Row from 'components/board/row';
 import PressKey from 'components/keyboard/press-key';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { Keyboard } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { ROW, CHECK_ROW, CHAR } from 'types';
 import { encodeHASH } from 'utils';
@@ -83,8 +84,8 @@ export default function CreateWordle({
     navigate(`/game/${encodeHASH(word)}`);
   }, [row]);
 
-  useHotkeys('backspace', () => remove());
-  useHotkeys('enter', () => setGame());
+  // useHotkeys('backspace', () => remove());
+  // useHotkeys('enter', () => setGame());
   Modal.setAppElement('#root');
 
   return (
@@ -94,7 +95,7 @@ export default function CreateWordle({
       // onRequestClose={() => onClose(false)}
       contentLabel='Example Modal'
     >
-      <PressKey event={event} />
+      {/* <PressKey event={event} /> */}
       <Layout>
         <Header>
           <Button type='button' onClick={() => onClose(false)}>
@@ -105,9 +106,7 @@ export default function CreateWordle({
           <Row row={row} checkRow={checkRow} />
         </Body>
         <Footer>
-          <ActionButton onClick={() => onClose(false)}>
-            Close (ESC)
-          </ActionButton>
+          <ActionButton onClick={() => onClose(false)}>Close</ActionButton>
         </Footer>
       </Layout>
     </Modal>
