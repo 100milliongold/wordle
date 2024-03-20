@@ -1,4 +1,29 @@
 import tw, { styled } from 'twin.macro';
+import ReactModal from 'react-modal';
+
+export const StyledModal = styled(ReactModal)`
+  &.ReactModal__Content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    overflow: auto;
+    margin-right: -50%;
+    outline: none;
+    /* padding: 2px; */
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    ${tw`
+      w-10/12
+      sm:w-96
+      p-0
+      shadow-2xl
+      transition-all
+      rounded-lg 
+    `}
+  }
+`;
 
 export const Button = styled.button`
   ${tw`
@@ -10,12 +35,38 @@ export const Button = styled.button`
 `;
 
 export const Layout = styled.div`
-  ${tw`relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:w-full `}
+  ${tw`
+  relative 
+  transform 
+  overflow-hidden 
+  bg-white 
+  `}
 `;
 
 export const Header = styled.div`
   ${tw`
-    flex justify-end items-center bg-gray-500 text-white text-xl rounded-t-md px-2 py-2
+    flex justify-between items-center bg-gray-500 text-white text-xl rounded-t-md px-2 py-2
+  `}
+`;
+
+export const Title = styled.h1`
+  ${tw``}
+`;
+
+export const Word = styled.div`
+  ${tw`
+    mb-2
+  `}
+`;
+
+export const Message = styled.div`
+  ${tw`
+  text-center
+  text-red-500
+  h-4
+  leading-3	
+  text-sm
+  font-bold
   `}
 `;
 
@@ -23,7 +74,8 @@ export const Body = styled.div`
   ${tw`
     grid
     gap-board
-    w-board
+    w-full
+    h-fit
     p-board
     `}
 `;

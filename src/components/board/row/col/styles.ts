@@ -25,5 +25,15 @@ export const Layout = styled.div<{ state: STATE }>`
         ? tw`bg-board-correct`
         : state === 'present'
           ? tw`bg-board-present`
-          : tw`bg-board`}
+          : state === null
+            ? tw`bg-black`
+            : tw`bg-board`}
+
+  ${({ state }) =>
+    state === null
+      ? tw`
+      border-2
+      border-board
+      `
+      : ''}
 `;

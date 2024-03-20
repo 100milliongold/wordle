@@ -10,7 +10,7 @@ import {
 } from 'store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { stringToRow, decodeHASH } from 'utils';
+import { stringToRow, decodeHASH, checkKeyboard } from 'utils';
 import { CHAR } from 'types';
 
 export default function Game() {
@@ -44,6 +44,11 @@ export default function Game() {
     dispatch(checkBlock());
   }, [dispatch]);
 
+  const status = useCallback(
+    (char: CHAR) => checkKeyboard(char, challengeGrid, chekGrid),
+    [challengeGrid, chekGrid],
+  );
+
   return (
     <Layout data-cy='game-Layout'>
       <Header data-cy='game-Header' />
@@ -54,6 +59,7 @@ export default function Game() {
           data-cy='game-Board'
         />
         <Keyboard
+          status={status}
           enter={check}
           remove={remove}
           click={click}

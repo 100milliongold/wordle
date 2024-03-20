@@ -1,4 +1,5 @@
 export * from './hash';
-export * from './createFullGrid';
-export { default as stringToRow } from './stringToRow';
-export { default as checkRow } from './checkRow';
+export * from './create-full-grid';
+export { default as stringToRow } from './string-to-row';
+export { default as checkRow } from './check-row';
+export { default as checkKeyboard } from './check-key-board';

@@ -9,10 +9,10 @@ import { ROW, BOARD, CHECK_BOARD } from 'types';
  */
 
 export interface IReducer {
-  challengeGrid: BOARD;
-  solvedRow?: ROW;
-  workingGrid: ROW;
-  chekGrid: CHECK_BOARD;
+  challengeGrid: BOARD; // challengeGrid : 입력된 보드
+  solvedRow?: ROW; // solvedGrid : 정답 줄
+  workingGrid: ROW; // workingGrid : 현재 입력한 줄
+  chekGrid: CHECK_BOARD; // 정답 상태
   X: number;
   Y: number;
 }

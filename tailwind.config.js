@@ -8,9 +8,13 @@ module.exports = {
       colors: {
         mainBG: '#e3e3e1', // 메인 백그라운드 컬러
         board: '#818384',
+        'board-black': '#3a3a3',
         'board-correct': '#538d4e',
         'board-present': '#b59f3b',
         'board-absent': '#3a3a3c',
+      },
+      borderColor: {
+        board: '#3a3a3c',
       },
       flex: {
         half: '0.5',
