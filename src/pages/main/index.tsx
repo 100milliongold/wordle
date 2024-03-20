@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ActionButton, CreateWordle } from 'components';
+import { ActionButton, CreateWordle, HowToPlayDialog } from 'components';
 import { encodeHASH } from 'utils';
 import {
   Layout,
@@ -16,16 +16,22 @@ import {
 
 export default function Main() {
   const wordle = encodeHASH('WORLD');
-  const [open, setOpen] = useState(false);
-  const onClose = (arg: boolean) => setOpen(arg);
+  const [createWordleOpen, setCreateWordle] = useState(false);
+  const onCreateWordleClose = (arg: boolean) => setCreateWordle(arg);
+
+  const [howToPlayOpen, setHowToPlayOpen] = useState(false);
+  const onHowToPlayOpenClose = (arg: boolean) => setHowToPlayOpen(arg);
+
   return (
     <>
-      <CreateWordle open={open} onClose={onClose} />
+      <CreateWordle open={createWordleOpen} onClose={onCreateWordleClose} />
+      <HowToPlayDialog open={howToPlayOpen} onClose={onHowToPlayOpenClose} />
+
       <Layout data-cy='Main-Layout'>
         <Container data-cy='Main-Container'>
           <Content data-cy='Main-Content'>
             <LogoImg data-cy='Main-LogoImg' />
-            <LogoText data-cy='Main-LogoText'>워드러</LogoText>
+            <LogoText data-cy='Main-LogoText'>워들러</LogoText>
             <ContentBody data-cy='Main-ContentBody'>
               <ContentWelcomeTitle data-cy='Main-ContentWelcomeTitle'>
                 환영합니다.
@@ -37,8 +43,11 @@ export default function Main() {
                 <Link to={`/game/${wordle}`}>
                   <ActionButton>시작하기</ActionButton>
                 </Link>
-                <ActionButton onClick={() => onClose(true)}>
+                <ActionButton onClick={() => onCreateWordleClose(true)}>
                   워들 생성하기
+                </ActionButton>
+                <ActionButton onClick={() => onHowToPlayOpenClose(true)}>
+                  게임 방법
                 </ActionButton>
               </ContentBodyActions>
             </ContentBody>
