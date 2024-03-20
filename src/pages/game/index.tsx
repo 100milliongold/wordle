@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Layout, Main } from './styles';
 import { Header, Board, Keyboard } from 'components';
-import { createGrid, RootState } from 'store';
+import {
+  createGrid,
+  RootState,
+  fillBlock,
+  removeBlock,
+  checkBlock,
+} from 'store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { stringToRow, decodeHASH } from 'utils';
+import { CHAR } from 'types';
 
 export default function Game() {
   const dispatch = useDispatch();
@@ -15,14 +22,27 @@ export default function Game() {
     reducer: { challengeGrid, chekGrid },
   } = useSelector((state: RootState) => state);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (id !== undefined) {
-      // console.log(decodeHASH(id));
       dispatch(createGrid(stringToRow(decodeHASH(id))));
     } else {
       navigate('/');
     }
   }, []);
+
+  const event = (char: CHAR) => dispatch(fillBlock(char));
+  const click = useCallback(
+    (str: CHAR) => {
+      dispatch(fillBlock(str));
+    },
+    [dispatch],
+  );
+  const remove = useCallback(() => {
+    dispatch(removeBlock());
+  }, [dispatch]);
+  const check = useCallback(() => {
+    dispatch(checkBlock());
+  }, [dispatch]);
 
   return (
     <Layout data-cy='game-Layout'>
@@ -33,7 +53,13 @@ export default function Game() {
           board={challengeGrid}
           data-cy='game-Board'
         />
-        <Keyboard data-cy='game-Keyboard' />
+        <Keyboard
+          enter={check}
+          remove={remove}
+          click={click}
+          event={event}
+          data-cy='game-Keyboard'
+        />
       </Main>
     </Layout>
   );

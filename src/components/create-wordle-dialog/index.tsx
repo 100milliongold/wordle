@@ -81,6 +81,8 @@ export default function CreateWordle({
 
   const setGame = useCallback(() => {
     const word = row.join('');
+    console.log('word', word);
+
     navigate(`/game/${encodeHASH(word)}`);
   }, [row]);
 
@@ -93,7 +95,7 @@ export default function CreateWordle({
       isOpen={open}
       style={customStyles}
       // onRequestClose={() => onClose(false)}
-      contentLabel='Example Modal'
+      contentLabel='Start Modal'
     >
       {/* <PressKey event={event} /> */}
       <Layout>
@@ -103,7 +105,16 @@ export default function CreateWordle({
           </Button>
         </Header>
         <Body>
-          <Row row={row} checkRow={checkRow} />
+          <div className='mb-1'>
+            <Row row={row} checkRow={checkRow} />
+          </div>
+          <Keyboard
+            enter={() => setGame()}
+            remove={remove}
+            click={event}
+            event={event}
+            data-cy='new-game-keyboard'
+          />
         </Body>
         <Footer>
           <ActionButton onClick={() => onClose(false)}>Close</ActionButton>
