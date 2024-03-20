@@ -3,11 +3,12 @@ import { ActionButton, Body, Button, Footer, Header, Layout } from './styles';
 import { ReactComponent as CloseIcon } from 'assets/images/close_FILL0_wght400_GRAD0_opsz24.svg';
 import Modal from 'react-modal';
 import Row from 'components/board/row';
-import PressKey from 'components/keyboard/press-key';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { Keyboard } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { ROW, CHECK_ROW, CHAR } from 'types';
 import { encodeHASH } from 'utils';
+import { getWord } from 'services';
+import { isAxiosError } from 'axios';
 
 interface IProps {
   open: boolean;
@@ -78,13 +79,22 @@ export default function CreateWordle({
     });
   }, [index]);
 
-  const setGame = useCallback(() => {
+  const setGame = useCallback(async () => {
     const word = row.join('');
-    navigate(`/game/${encodeHASH(word)}`);
+    // console.log('word', word);
+
+    try {
+      await getWord(word.toLowerCase());
+      navigate(`/game/${encodeHASH(word)}`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        alert('단어가 존재하지 않습니다.');
+      } else {
+        console.warn('api ', error);
+      }
+    }
   }, [row]);
 
-  useHotkeys('backspace', () => remove());
-  useHotkeys('enter', () => setGame());
   Modal.setAppElement('#root');
 
   return (
@@ -92,9 +102,9 @@ export default function CreateWordle({
       isOpen={open}
       style={customStyles}
       // onRequestClose={() => onClose(false)}
-      contentLabel='Example Modal'
+      contentLabel='Start Modal'
     >
-      <PressKey event={event} />
+      {/* <PressKey event={event} /> */}
       <Layout>
         <Header>
           <Button type='button' onClick={() => onClose(false)}>
@@ -102,12 +112,19 @@ export default function CreateWordle({
           </Button>
         </Header>
         <Body>
-          <Row row={row} checkRow={checkRow} />
+          <div className='mb-1'>
+            <Row row={row} checkRow={checkRow} />
+          </div>
+          <Keyboard
+            enter={() => setGame()}
+            remove={remove}
+            click={event}
+            event={event}
+            data-cy='new-game-keyboard'
+          />
         </Body>
         <Footer>
-          <ActionButton onClick={() => onClose(false)}>
-            Close (ESC)
-          </ActionButton>
+          <ActionButton onClick={() => onClose(false)}>Close</ActionButton>
         </Footer>
       </Layout>
     </Modal>
