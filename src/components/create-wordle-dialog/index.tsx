@@ -55,8 +55,8 @@ export default function CreateWordle({
   const event = useCallback(
     (arg: CHAR) => {
       setRow((prev) => {
-        if (index > row.length - 1) {
-          setIndex(4);
+        if (index > (row.length - 1)) {
+          setIndex(5);
           return prev;
         }
         prev[index] = arg;
@@ -73,15 +73,15 @@ export default function CreateWordle({
         setIndex(0);
         return prev;
       }
-      prev[index] = '';
-      setIndex(index - 1);
+      prev[index - 1] = '';
+      setIndex(prevIndex => prevIndex - 1);
       return prev;
     });
   }, [index]);
 
   const setGame = useCallback(async () => {
     const word = row.join('');
-    // console.log('word', word);
+    //console.log('word', word);
 
     try {
       await getWord(word.toLowerCase());
@@ -116,7 +116,7 @@ export default function CreateWordle({
             <Row row={row} checkRow={checkRow} />
           </div>
           <Keyboard
-            enter={() => setGame()}
+            enter={setGame}
             remove={remove}
             click={event}
             event={event}
