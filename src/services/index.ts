@@ -1,1 +1,1 @@
-export { default as word } from './word';
+export * from './word';

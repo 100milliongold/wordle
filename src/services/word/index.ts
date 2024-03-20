@@ -5,11 +5,12 @@ import { WORD_RES, WORD_ERR_RES } from 'types';
 const word = (word: string) =>
   `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
-function useWord(str: string) {
-  const { data, error, isLoading } = useSWR(word(str), fetcher);
+export function useWord(str: string) {
+  const { data, error, isLoading, mutate } = useSWR(word(str), fetcher);
 
   return {
-    user: data,
+    mutate,
+    data: data,
     isLoading,
     isError: error as AxiosError<WORD_ERR_RES> | undefined,
   };
@@ -18,4 +19,4 @@ function useWord(str: string) {
 const fetcher = (url: string) =>
   axios.get<WORD_RES>(url).then((res) => res.data);
 
-export default useWord;
+export const getWord = (str: string) => fetcher(word(str));
