@@ -15,6 +15,10 @@ module.exports = {
       },
       borderColor: {
         board: '#3a3a3c',
+        howTo: '#878a8c',
+        correct: '#538d4e',
+        present: '#b59f3b',
+        absent: '#3a3a3c',
       },
       flex: {
         half: '0.5',
