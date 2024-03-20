@@ -3,7 +3,7 @@ import { encodeHASH, decodeHASH } from './index';
 const before = 'wordle';
 const after = encodeHASH('wordle');
 
-describe('hash test', () => {
+describe('해시 알고리즘 테스트', () => {
   it('encoding test', () => {
     console.log({ before: before, after: after });
     expect(encodeHASH(before)).toBe(after);

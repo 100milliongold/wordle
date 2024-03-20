@@ -1,5 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { ActionButton, Body, Button, Footer, Header, Layout } from './styles';
+import {
+  ActionButton,
+  Body,
+  Button,
+  Footer,
+  Header,
+  Layout,
+  Title,
+  Word,
+  StyledModal,
+  Message,
+} from './styles';
 import { ReactComponent as CloseIcon } from 'assets/images/close_FILL0_wght400_GRAD0_opsz24.svg';
 import Modal from 'react-modal';
 import Row from 'components/board/row';
@@ -15,20 +26,6 @@ interface IProps {
   onClose: (arg: boolean) => void;
 }
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: 0,
-    border: 0,
-    zIndex: 10,
-  },
-};
-
 export default function CreateWordle({
   open,
   onClose,
@@ -38,11 +35,17 @@ export default function CreateWordle({
       setIndex(0);
       setRow(['', '', '', '', '']);
       setCheckRow(['absent', 'absent', 'absent', 'absent', 'absent']);
+      setIsError(false);
+      setMessage('');
     }
   }, [open]);
 
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
+
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState('');
+
   const [row, setRow] = useState<ROW>(['', '', '', '', '']);
   const [checkRow, setCheckRow] = useState<CHECK_ROW>([
     'absent',
@@ -55,7 +58,7 @@ export default function CreateWordle({
   const event = useCallback(
     (arg: CHAR) => {
       setRow((prev) => {
-        if (index > (row.length - 1)) {
+        if (index > row.length - 1) {
           setIndex(5);
           return prev;
         }
@@ -69,14 +72,16 @@ export default function CreateWordle({
 
   const remove = useCallback(() => {
     setRow((prev) => {
-      if (index < 0) {
+      if (index <= 0) {
         setIndex(0);
         return prev;
       }
       prev[index - 1] = '';
-      setIndex(prevIndex => prevIndex - 1);
+      setIndex((prevIndex) => prevIndex - 1);
       return prev;
     });
+    setIsError(false);
+    setMessage('');
   }, [index]);
 
   const setGame = useCallback(async () => {
@@ -86,9 +91,13 @@ export default function CreateWordle({
     try {
       await getWord(word.toLowerCase());
       navigate(`/game/${encodeHASH(word)}`);
+      setIsError(false);
+      setMessage('');
     } catch (error) {
       if (isAxiosError(error)) {
-        alert('단어가 존재하지 않습니다.');
+        setIsError(true);
+        setMessage('단어가 존재하지 않습니다.');
+        // alert('단어가 존재하지 않습니다.');
       } else {
         console.warn('api ', error);
       }
@@ -98,23 +107,25 @@ export default function CreateWordle({
   Modal.setAppElement('#root');
 
   return (
-    <Modal
+    <StyledModal
       isOpen={open}
-      style={customStyles}
+      // style={customStyles}
       // onRequestClose={() => onClose(false)}
       contentLabel='Start Modal'
     >
       {/* <PressKey event={event} /> */}
-      <Layout>
-        <Header>
+      <Layout data-cy='create-wordle-dialog-layout'>
+        <Header data-cy='create-wordle-dialog-header'>
+          <Title data-cy='create-wordle-dialog-title'>새 Word 생성</Title>
           <Button type='button' onClick={() => onClose(false)}>
             <CloseIcon />
           </Button>
         </Header>
-        <Body>
-          <div className='mb-1'>
+        <Body data-cy='create-wordle-dialog-body'>
+          <Word>
             <Row row={row} checkRow={checkRow} />
-          </div>
+          </Word>
+          <Message>{isError && <>{message}</>}</Message>
           <Keyboard
             enter={setGame}
             remove={remove}
@@ -123,10 +134,10 @@ export default function CreateWordle({
             data-cy='new-game-keyboard'
           />
         </Body>
-        <Footer>
+        <Footer data-cy='create-wordle-dialog-footer'>
           <ActionButton onClick={() => onClose(false)}>Close</ActionButton>
         </Footer>
       </Layout>
-    </Modal>
+    </StyledModal>
   );
 }

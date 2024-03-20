@@ -6,82 +6,159 @@ import Half from './blank';
 import PressKey from './press-key';
 import SpecialKey from './press-key/special-key';
 import { ReactComponent as BackspaceIcon } from 'assets/images/backspace_FILL0_wght400_GRAD0_opsz24.svg';
-import { CHAR } from 'types';
+import { CHAR, STATE } from 'types';
 
 interface IProps {
   event: (str: CHAR) => void;
   click: (str: CHAR) => void;
   remove: () => void;
   enter: () => void;
+  status?: (char: CHAR) => STATE;
   ['data-cy']: string;
 }
 
 export default function Keyboard(props: IProps) {
-  const { enter, event, click, remove } = props;
+  const { enter, event, click, remove, status } = props;
 
   return (
     <Layout data-cy={props['data-cy']}>
       <PressKey event={event} />
       <SpecialKey enter={enter} remove={remove} />
       <Row>
-        <Key data-cy='key-Q' onClick={() => click('Q')}>
+        <Key
+          data-cy='key-Q'
+          state={status ? status('Q') : undefined}
+          onClick={() => click('Q')}
+        >
           q
         </Key>
-        <Key data-cy='key-W' onClick={() => click('W')}>
+        <Key
+          data-cy='key-W'
+          state={status ? status('W') : undefined}
+          onClick={() => click('W')}
+        >
           w
         </Key>
-        <Key data-cy='key-E' onClick={() => click('E')}>
+        <Key
+          data-cy='key-E'
+          state={status ? status('E') : undefined}
+          onClick={() => click('E')}
+        >
           e
         </Key>
-        <Key data-cy='key-R' onClick={() => click('R')}>
+        <Key
+          data-cy='key-R'
+          state={status ? status('R') : undefined}
+          onClick={() => click('R')}
+        >
           r
         </Key>
-        <Key data-cy='key-T' onClick={() => click('T')}>
+        <Key
+          data-cy='key-T'
+          state={status ? status('T') : undefined}
+          onClick={() => click('T')}
+        >
           t
         </Key>
-        <Key data-cy='key-Y' onClick={() => click('Y')}>
+        <Key
+          data-cy='key-Y'
+          state={status ? status('Y') : undefined}
+          onClick={() => click('Y')}
+        >
           y
         </Key>
-        <Key data-cy='key-U' onClick={() => click('U')}>
+        <Key
+          data-cy='key-U'
+          state={status ? status('U') : undefined}
+          onClick={() => click('U')}
+        >
           u
         </Key>
-        <Key data-cy='key-I' onClick={() => click('I')}>
+        <Key
+          data-cy='key-I'
+          state={status ? status('I') : undefined}
+          onClick={() => click('I')}
+        >
           i
         </Key>
-        <Key data-cy='key-O' onClick={() => click('O')}>
+        <Key
+          data-cy='key-O'
+          state={status ? status('O') : undefined}
+          onClick={() => click('O')}
+        >
           o
         </Key>
-        <Key data-cy='key-P' onClick={() => click('P')}>
+        <Key
+          data-cy='key-P'
+          state={status ? status('P') : undefined}
+          onClick={() => click('P')}
+        >
           p
         </Key>
       </Row>
       <Row>
         <Half />
-        <Key data-cy='key-A' onClick={() => click('A')}>
+        <Key
+          data-cy='key-A'
+          state={status ? status('A') : undefined}
+          onClick={() => click('A')}
+        >
           a
         </Key>
-        <Key data-cy='key-S' onClick={() => click('S')}>
+        <Key
+          data-cy='key-S'
+          state={status ? status('S') : undefined}
+          onClick={() => click('S')}
+        >
           s
         </Key>
-        <Key data-cy='key-D' onClick={() => click('D')}>
+        <Key
+          data-cy='key-D'
+          state={status ? status('D') : undefined}
+          onClick={() => click('D')}
+        >
           d
         </Key>
-        <Key data-cy='key-F' onClick={() => click('F')}>
+        <Key
+          data-cy='key-F'
+          state={status ? status('F') : undefined}
+          onClick={() => click('F')}
+        >
           f
         </Key>
-        <Key data-cy='key-G' onClick={() => click('G')}>
+        <Key
+          data-cy='key-G'
+          state={status ? status('G') : undefined}
+          onClick={() => click('G')}
+        >
           g
         </Key>
-        <Key data-cy='key-H' onClick={() => click('H')}>
+        <Key
+          data-cy='key-H'
+          state={status ? status('H') : undefined}
+          onClick={() => click('H')}
+        >
           h
         </Key>
-        <Key data-cy='key-J' onClick={() => click('J')}>
+        <Key
+          data-cy='key-J'
+          state={status ? status('J') : undefined}
+          onClick={() => click('J')}
+        >
           j
         </Key>
-        <Key data-cy='key-K' onClick={() => click('K')}>
+        <Key
+          data-cy='key-K'
+          state={status ? status('K') : undefined}
+          onClick={() => click('K')}
+        >
           k
         </Key>
-        <Key data-cy='key-L' onClick={() => click('L')}>
+        <Key
+          data-cy='key-L'
+          state={status ? status('L') : undefined}
+          onClick={() => click('L')}
+        >
           l
         </Key>
         <Half />
@@ -90,25 +167,53 @@ export default function Keyboard(props: IProps) {
         <Key oneAndAHalf onClick={() => enter()}>
           enter
         </Key>
-        <Key data-cy='key-Z' onClick={() => click('Z')}>
+        <Key
+          data-cy='key-Z'
+          state={status ? status('Z') : undefined}
+          onClick={() => click('Z')}
+        >
           z
         </Key>
-        <Key data-cy='key-X' onClick={() => click('X')}>
+        <Key
+          data-cy='key-X'
+          state={status ? status('X') : undefined}
+          onClick={() => click('X')}
+        >
           x
         </Key>
-        <Key data-cy='key-C' onClick={() => click('C')}>
+        <Key
+          data-cy='key-C'
+          state={status ? status('C') : undefined}
+          onClick={() => click('C')}
+        >
           c
         </Key>
-        <Key data-cy='key-V' onClick={() => click('V')}>
+        <Key
+          data-cy='key-V'
+          state={status ? status('V') : undefined}
+          onClick={() => click('V')}
+        >
           v
         </Key>
-        <Key data-cy='key-B' onClick={() => click('B')}>
+        <Key
+          data-cy='key-B'
+          state={status ? status('B') : undefined}
+          onClick={() => click('B')}
+        >
           b
         </Key>
-        <Key data-cy='key-N' onClick={() => click('N')}>
+        <Key
+          data-cy='key-N'
+          state={status ? status('N') : undefined}
+          onClick={() => click('N')}
+        >
           n
         </Key>
-        <Key data-cy='key-M' onClick={() => click('M')}>
+        <Key
+          data-cy='key-M'
+          state={status ? status('M') : undefined}
+          onClick={() => click('M')}
+        >
           m
         </Key>
         <Key oneAndAHalf onClick={() => remove()}>
