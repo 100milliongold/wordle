@@ -28,6 +28,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
 
       const challengeGrid = createFullGrid();
       const chekGrid = createCheckFullGrid();
+      const workingGrid = createRow();
       const X = 0,
         Y = 0;
       return {
@@ -35,6 +36,7 @@ function reducer(state = initialState, action: BoardAction): IReducer {
         solvedRow,
         challengeGrid,
         chekGrid,
+        workingGrid,
         X,
         Y,
       };
@@ -44,17 +46,21 @@ function reducer(state = initialState, action: BoardAction): IReducer {
      */
     case types.FILL_BLOCK: {
       let { Y } = state;
-      const { X, challengeGrid } = state;
+      const { X, challengeGrid, workingGrid } = state;
       if (Y === 5) {
         return {
           ...state,
         };
       }
+
       challengeGrid[X][Y] = action.payload as CHAR;
+      workingGrid[Y] = action.payload;
+
       Y = Y + 1;
       return {
         ...state,
         challengeGrid,
+        workingGrid,
         X,
         Y,
       };
@@ -64,17 +70,19 @@ function reducer(state = initialState, action: BoardAction): IReducer {
      */
     case types.REMOVE_BLOCK: {
       let { Y } = state;
-      const { X, challengeGrid } = state;
+      const { X, challengeGrid, workingGrid } = state;
       if (Y === 0) {
         return {
           ...state,
         };
       }
       challengeGrid[X][Y - 1] = '';
+      workingGrid[Y - 1] = '';
       Y = Y - 1;
       return {
         ...state,
         challengeGrid,
+        workingGrid,
         X,
         Y,
       };
