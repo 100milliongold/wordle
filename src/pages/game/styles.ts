@@ -25,3 +25,19 @@ export const Main = styled.main`
     flex-1
     `}
 `;
+
+export const Message = styled.p`
+  ${tw`
+    h-8
+    w-full
+    flex
+    justify-center
+    text-red-500
+    font-bold
+  `}
+`;
+
+export const GamekeyBoard = styled.div`
+  ${tw`
+  `}
+`;
