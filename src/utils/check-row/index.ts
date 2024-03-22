@@ -44,7 +44,6 @@ const sameCharacterTest = (inputList: CHAR[], answer: CHAR[], input: CHAR) => {
 
   const result = Object.fromEntries(entriesFilter);
   return !isEqual(inputList, answer) && (result[input] || []).length > 0;
-  return false;
 };
 
 export default checkRow;
