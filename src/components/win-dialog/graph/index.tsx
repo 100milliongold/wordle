@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { formatter } from 'utils';
 import { GraphList, Graph, GraphGuess } from './styles';
 import Bar from './bar';
