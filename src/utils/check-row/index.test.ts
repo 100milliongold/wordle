@@ -3,6 +3,7 @@ import { ROW, CHECK_ROW } from 'types';
 
 const input1: ROW = ['A', 'A', 'W', 'L', 'D'];
 const input2: ROW = ['W', 'O', 'R', 'L', 'D'];
+const input3: ROW = ['O', 'O', 'O', 'L', 'D'];
 const answer: ROW = ['W', 'O', 'R', 'L', 'D'];
 
 describe('단어 검색 테스트', () => {
@@ -28,6 +29,19 @@ describe('단어 검색 테스트', () => {
       'correct',
     ];
     const result2: CHECK_ROW = checkRow(input2, answer);
+    console.log('정답 => ', test2);
+    console.log('결과 => ', result2);
+    expect(result2).toEqual(test2);
+  });
+  it('중복 입력 테스트', () => {
+    const test2: CHECK_ROW = [
+      'absent',
+      'absent',
+      'absent',
+      'correct',
+      'correct',
+    ];
+    const result2: CHECK_ROW = checkRow(input3, answer);
     console.log('정답 => ', test2);
     console.log('결과 => ', result2);
     expect(result2).toEqual(test2);
