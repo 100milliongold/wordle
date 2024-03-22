@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Layout, Main, Message, GamekeyBoard } from './styles';
-import { Header, Board, Keyboard } from 'components';
+import { Header, Board, Keyboard, HowToPlayDialog } from 'components';
 import {
   createGrid,
   RootState,
@@ -18,6 +18,10 @@ export default function Game() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const [howToPlayOpen, setHowToPlayOpen] = useState(false);
+  const onHowToPlayOpenClose = (arg: boolean) => setHowToPlayOpen(arg);
+
 
   /**
    * 문자 에러 검출
@@ -68,26 +72,31 @@ export default function Game() {
   );
 
   return (
-    <Layout data-cy='game-Layout'>
-      <Header data-cy='game-Header' />
-      <Main>
-        <Board
-          checkBoard={chekGrid}
-          board={challengeGrid}
-          data-cy='game-Board'
+    <>
+      <HowToPlayDialog open={howToPlayOpen} onClose={onHowToPlayOpenClose} />
+      <Layout data-cy='game-Layout'>
+        <Header data-cy='game-Header'
+          onHowToPlayClick={() => onHowToPlayOpenClose(true)}
         />
-        <Message>{isError && <>단어가 존재하지 않습니다.</>}</Message>
-        <GamekeyBoard>
-          <Keyboard
-            status={status}
-            enter={check}
-            remove={remove}
-            click={click}
-            event={event}
-            data-cy='game-Keyboard'
+        <Main>
+          <Board
+            checkBoard={chekGrid}
+            board={challengeGrid}
+            data-cy='game-Board'
           />
-        </GamekeyBoard>
-      </Main>
-    </Layout>
+          <Message>{isError && <>단어가 존재하지 않습니다.</>}</Message>
+          <GamekeyBoard>
+            <Keyboard
+              status={status}
+              enter={check}
+              remove={remove}
+              click={click}
+              event={event}
+              data-cy='game-Keyboard'
+            />
+          </GamekeyBoard>
+        </Main>
+      </Layout>
+    </>
   );
 }
