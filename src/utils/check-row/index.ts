@@ -1,5 +1,5 @@
 import { CHAR, CHECK_ROW, ROW, STATE } from 'types';
-import { chain, groupBy } from 'lodash-es';
+import { groupBy, isEqual } from 'lodash-es';
 
 const checkRow = (input: ROW, answer?: ROW): CHECK_ROW => {
   if (answer !== undefined) {
@@ -33,18 +33,18 @@ const answerIndex = (input: CHAR, answer: ROW) => answer.indexOf(input);
  * @param answer
  * @returns false : 정답보다 같은 문자가 적다 , true : 입력한 줄에서 같은 문자를 입력했다.
  */
-const sameCharacterTest = (inputList: ROW, answer: ROW, input: CHAR) => {
+const sameCharacterTest = (inputList: CHAR[], answer: CHAR[], input: CHAR) => {
   const answerGroup = groupBy(answer);
+  const inputGroup = groupBy(inputList);
+  const inputEntries = Object.entries(inputGroup);
 
-  const result = chain(inputList)
-    .groupBy((o) => o)
-    .toPairs()
+  const entriesFilter = inputEntries
     .filter(([, value]) => value.length > 1)
-    // .tap((o) => console.log(o))
-    .filter(([key, value]) => (answerGroup[key] || []).length < value.length)
-    .fromPairs()
-    .value();
-  return (result[input] || []).length > 0;
+    .filter(([key, value]) => (answerGroup[key] || []).length < value.length);
+
+  const result = Object.fromEntries(entriesFilter);
+  return !isEqual(inputList, answer) && (result[input] || []).length > 0;
+  return false;
 };
 
 export default checkRow;

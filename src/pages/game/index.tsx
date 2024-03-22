@@ -14,11 +14,12 @@ import {
   removeBlock,
   checkBlock,
 } from 'store';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { stringToRow, decodeHASH, checkKeyboard } from 'utils';
 import { CHAR } from 'types';
 import { getWord } from 'services';
+import { isAxiosError } from 'axios';
 
 export default function Game() {
   const dispatch = useDispatch();
@@ -36,18 +37,21 @@ export default function Game() {
    */
   const [isError, setIsError] = useState(false);
 
+  const reducer = useSelector(
+    ({ reducer }: RootState) => reducer,
+    shallowEqual,
+  );
+
   const {
-    reducer: {
-      challengeGrid,
-      checkGrid,
-      workingGrid,
-      isWinner,
-      totalWordle,
-      winCount,
-      startTime,
-      endTime,
-    },
-  } = useSelector((state: RootState) => state);
+    challengeGrid,
+    checkGrid,
+    workingGrid,
+    isWinner,
+    totalWordle,
+    winCount,
+    startTime,
+    endTime,
+  } = reducer;
 
   useEffect(() => {
     setIsError(false);
@@ -112,7 +116,12 @@ export default function Game() {
       setIsError(false);
       dispatch(checkBlock());
     } catch (error) {
-      setIsError(true);
+      // 해당 에러는 404 타입의 에러인가?
+      if (isAxiosError(error)) {
+        setIsError(true);
+      } else {
+        console.debug(error);
+      }
     }
   }, [dispatch, workingGrid, isWinner]);
 
