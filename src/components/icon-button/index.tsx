@@ -1,8 +1,13 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
 
-export default function IconButton({ children }: React.PropsWithChildren) {
-  return <Button>{children}</Button>;
+
+interface IProps {
+  onClick? : () => void
+}
+
+export default function IconButton({ children, onClick }: React.PropsWithChildren<IProps>) {
+  return <Button onClick={onClick}>{children}</Button>;
 }
 
 const Button = styled.button`

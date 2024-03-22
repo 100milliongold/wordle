@@ -30,7 +30,7 @@ export const Button = styled.button`
   md:pl-0
   md:pt-1
   pr-2
-  fill-black
+  fill-white
   `}
 `;
 
@@ -38,7 +38,8 @@ export const Layout = styled.div`
   ${tw`
   relative 
   transform 
-  bg-white 
+  bg-gray-900 
+  text-white
   `}
 `;
 
