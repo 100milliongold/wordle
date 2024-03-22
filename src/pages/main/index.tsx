@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ActionButton, CreateWordle, HowToPlayDialog } from 'components';
+import { ActionButton, CreateWordle,  } from 'components';
 import { encodeHASH } from 'utils';
 import {
   Layout,
@@ -19,13 +19,10 @@ export default function Main() {
   const [createWordleOpen, setCreateWordle] = useState(false);
   const onCreateWordleClose = (arg: boolean) => setCreateWordle(arg);
 
-  const [howToPlayOpen, setHowToPlayOpen] = useState(false);
-  const onHowToPlayOpenClose = (arg: boolean) => setHowToPlayOpen(arg);
 
   return (
     <>
       <CreateWordle open={createWordleOpen} onClose={onCreateWordleClose} />
-      <HowToPlayDialog open={howToPlayOpen} onClose={onHowToPlayOpenClose} />
 
       <Layout data-cy='Main-Layout'>
         <Container data-cy='Main-Container'>
@@ -45,9 +42,6 @@ export default function Main() {
                 </Link>
                 <ActionButton onClick={() => onCreateWordleClose(true)}>
                   워들 생성하기
-                </ActionButton>
-                <ActionButton onClick={() => onHowToPlayOpenClose(true)}>
-                  게임 방법
                 </ActionButton>
               </ContentBodyActions>
             </ContentBody>
