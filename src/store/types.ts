@@ -13,4 +13,7 @@ export const FILL_BLOCK = 'FILL_BLOCK' as const;
  */
 export const REMOVE_BLOCK = 'REMOVE_BLOCK' as const;
 
+/**
+ * 다음 줄으로 
+ */
 export const CHECK_BLOCK = 'CHECK_BLOCK' as const;

@@ -37,7 +37,7 @@ export const Message = styled.p`
   `}
 `;
 
-export const GamekeyBoard = styled.div`
+export const GameKeyboard = styled.div`
   ${tw`
   `}
 `;

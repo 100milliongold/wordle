@@ -9,10 +9,58 @@ import { ROW, BOARD, CHECK_BOARD } from 'types';
  */
 
 export interface IReducer {
-  challengeGrid: BOARD; // challengeGrid : 입력된 보드
-  solvedRow?: ROW; // solvedGrid : 정답 줄
-  workingGrid: ROW; // workingGrid : 현재 입력한 줄
-  chekGrid: CHECK_BOARD; // 정답 상태
+  /**
+   * challengeGrid : 입력된 보드
+   */
+  challengeGrid: BOARD;
+
+  /**
+   * solvedGrid : 정답 줄
+   */
+  solvedRow?: ROW;
+
+  /**
+   * workingGrid : 현재 입력한 줄
+   */
+  workingGrid: ROW;
+
+  /**
+   * 정답 상태
+   */
+  checkGrid: CHECK_BOARD;
+
+  /**
+   * 가로
+   */
   X: number;
+
+  /**
+   * 세로
+   */
   Y: number;
+
+  /**
+   * 시작 시간
+   */
+  startTime: number;
+
+  /**
+   * 종료 시간
+   */
+  endTime: number;
+
+  /**
+   * 입력 횟수
+   */
+  totalWordle: number;
+
+  /**
+   * 승리 횟수
+   */
+  winCount: [number, number, number, number, number, number];
+
+  /**
+   * 승리여부
+   */
+  isWinner: boolean;
 }
